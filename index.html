@@ -13,15 +13,25 @@
 <body>
   <div class="container">
     <!-- title -->
-    <h2 class="center">Hangman</h2>
+    <h2 class="center mt-3">Classic Hangman</h2>
     <hr />
 
     <!-- Row 1 -->
-    <div class="row">
+    <div class="row panel">
+      <div class="col-lg-2 mt-2">Win: +100</div>
+      <div class="col-lg-2 mt-2">Lose: -50</div>
+      <div class="col-lg-4 mt-2 center">
+        <span style="color: red; font-size: 30px" id="warning"></span>
+      </div>
+      <div class="col-lg-4 mt-2" style="text-align: right">
+        Current Score:
+        <span id="score"></span>
+      </div>
+
       <!-- Remaining life  -->
-      <div class="center col-lg-4 mt-3">
-        <h4>Remaining Life</h4>
-        <h4 id="life"></h4>
+      <div class="center row col-lg-4 mt-3">
+        <h4 class="col-lg-12">Remaining Life:</h4>
+        <h4 class="col-lg-12" id="life"></h4>
       </div>
 
       <!-- Image  -->
@@ -30,23 +40,22 @@
       </div>
 
       <!-- Letters Guessed  -->
-      <div class="center col-lg-4 mt-3">
-        <h4>Wrong Guesses</h4>
-        <h4 id="guessedLetters"></h4>
+      <div class="center row col-lg-4 mt-3">
+        <h4 class="col-lg-12">Wrong Guesses:</h4>
+        <h4 class="col-lg-12" id="guessedLetters"></h4>
       </div>
-    </div>
 
-    <!-- Row 2 -->
-    <div class="row center">
+      <!-- Row 2 -->
+
       <!-- Place holder -->
       <div class="col-lg-2"></div>
 
       <!-- Display the word & feedback -->
-      <div class="col-lg-8 row">
-        <div class="col-lg-12 mt-5" style="font-size: 30px">
+      <div class="col-lg-8 center row">
+        <div class="col-lg-12 center mt-5" style="font-size: 30px">
           <p id="fakeString"></p>
         </div>
-        <div class="col-lg-12" id="status"></div>
+        <div class="col-lg-12 pb-3" id="status"></div>
       </div>
 
       <!-- Place holder -->
@@ -54,18 +63,39 @@
     </div>
 
     <!-- Row 3 -->
-    <div class="row center">
+    <div class="row center mt-3">
       <!-- Place holder -->
-      <div class="col-lg-3"></div>
+      <div class="row col-lg-4">
+        <div class="col-lg-3"></div>
+        <button
+          class="col-lg-6 center btn btn-outline-primary"
+          onClick="onHint()"
+          id="hint"
+        >
+          Get a hint
+        </button>
+        <div class="col-lg-3"></div>
+        <div class="col-lg-3"></div>
+        <button
+          class="col-lg-6 center btn btn-outline-danger"
+          onClick="onCheat()"
+          id="cheat"
+        >
+          Cheat
+        </button>
+        <div class="col-lg-3"></div>
+      </div>
 
       <!-- Input -->
-      <div class="col-lg-6 row center">
+
+      <div class="col-lg-4 row inputBox panel center">
+        <div class="col-lg-12 mt-2"><h5>YOUR GUESS</h5></div>
         <div class="col-lg-12">
-          <input type="text" id="guess" name="guess" />
+          <input type="text" id="guess" name="guess" maxlength="1" size="12" />
         </div>
         <div class="col-lg-12">
           <button
-            class="btn btn-primary mt-2"
+            class="btn btn-primary mt-2 mb-2"
             id="submit"
             onclick="guessSubmit()"
           >
@@ -75,14 +105,33 @@
       </div>
 
       <!-- Place holder -->
-      <div class="col-lg-3 center"></div>
+      <div class="row col-lg-4">
+        <div class="col-lg-3"></div>
+        <button
+          class="col-lg-6 center btn btn-outline-primary"
+          onClick="onRefresh()"
+          id="reset"
+        >
+          Reset Easy
+        </button>
+        <div class="col-lg-3"></div>
+        <div class="col-lg-3"></div>
+        <button
+          class="col-lg-6 center btn btn-outline-danger"
+          onClick="onHard()"
+          id="hard"
+        >
+          Reset Hard
+        </button>
+        <div class="col-lg-3"></div>
+      </div>
     </div>
   </div>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-lg-5"></div>
     <button class="mt-5 col-lg-2 center btn btn-danger" onClick="onRefresh()">
-      Restart
+      Get a New Word!
     </button>
     <div class="col-lg-5"></div>
-  </div>
+  </div> -->
 </body>
