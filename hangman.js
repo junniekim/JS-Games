@@ -30,7 +30,7 @@ function gameOverCheck() {
     document.getElementById("cheat").disabled = true;
   }
   //player wins if fakeString does not contain *
-  if (!fakeString.includes("*")) {
+  if (!fakeString.includes("_")) {
     //if hard mode, double the point
     if (hardFlag == true) {
       currentScore += 200;
@@ -86,10 +86,10 @@ function init() {
   //if hard mode, change some setting
   if (hardFlag) {
     document.getElementById("status").innerHTML =
-      "Hard mode doesn't allow you to get a hint or cheat. You also only get 3 lives. ";
+      "Hard mode doesn't allow you to get a hint. You also only get 3 lives. ";
     document.getElementById("warning").innerHTML = "Hard Mode";
     document.getElementById("hint").disabled = true;
-    document.getElementById("cheat").disabled = true;
+    document.getElementById("cheat").disabled = false;
     startLife = 3;
     let img = document.getElementById("theMan");
     img.src = "assets/5.PNG";
@@ -164,7 +164,7 @@ function init() {
   // fake string for display
   fakeString = "";
   for (let i = 0; i < chosenWord.length; i++) {
-    fakeString += " * ";
+    fakeString += " _ ";
   }
   document.getElementById("fakeString").innerHTML = fakeString;
 }
@@ -189,7 +189,7 @@ function onHard() {
 
 function onCheat() {
   for (let i = 0; i < fakeString.length; i++) {
-    if (fakeString.charAt(i) == "*") {
+    if (fakeString.charAt(i) == "_") {
       // console.log(chosenWord.charAt((i - 1) / 3));
       fakeString = setCharAt(
         fakeString,
@@ -214,7 +214,7 @@ function cheatEnd() {
 
 function onHint() {
   for (let i = 0; i < fakeString.length; i++) {
-    if (fakeString.charAt(i) == "*") {
+    if (fakeString.charAt(i) == "_") {
       fakeString = setCharAt(
         fakeString,
         i,
