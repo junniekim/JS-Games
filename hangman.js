@@ -21,7 +21,7 @@ function onRefresh() {
 function gameOverCheck() {
   //player lose if life is 0
   if (startLife == 0) {
-    document.getElementById("status").innerHTML = "You Lost.";
+    document.getElementById("status").innerHTML = "You Lost";
     currentScore -= 50;
     document.getElementById("submit").disabled = true;
     document.getElementById("score").innerHTML = currentScore;
@@ -86,7 +86,7 @@ function init() {
   //if hard mode, change some setting
   if (hardFlag) {
     document.getElementById("status").innerHTML =
-      "Hard mode doesn't allow you to get a hint. You also only get 3 lives. ";
+      "Hard mode doesn't allow you to get a hint, and you only get 3 lives ";
     document.getElementById("warning").innerHTML = "Hard Mode";
     document.getElementById("hint").disabled = true;
     document.getElementById("cheat").disabled = false;
@@ -273,7 +273,7 @@ function guessSubmit() {
         document.getElementById("guessedLetters").innerHTML = output;
       }
       startLife--;
-      document.getElementById("status").innerHTML = "Wrong guess. Try again";
+      document.getElementById("status").innerHTML = "Wrong guess";
 
       document.getElementById("life").innerHTML = startLife;
     }

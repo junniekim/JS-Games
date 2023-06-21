@@ -24,3 +24,7 @@ h5 {
   font-weight: bold;
   font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
+
+#status {
+  font-size: 20px;
+}
