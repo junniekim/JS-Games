@@ -1,0 +1,176 @@
+<head>
+  <!-- Link .js, .css, and bootstrap -->
+  <script src="hangman.js"></script>
+  <link rel="stylesheet" href="hangman.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+  />
+</head>
+
+<body>
+  <div class="container">
+    <!-- title -->
+    <!-- <div class="row">
+      <div calss="col-lg-3">s</div>
+      <div class="col-lg-6 center mt-3">Classic Hangman</h2>
+      <div calss="col-lg-3">????</div>
+    </div> -->
+    <div class="row center mt-3">
+      <div class="col-lg-4 center"></div>
+      <h2 class="col-lg-4">Classic Hangman</h2>
+
+      <div class="col-lg-4 center">
+        <a href="../index.html">
+          <button class="btn btn-link">Back to Menu</button>
+        </a>
+      </div>
+    </div>
+    <hr style="margin-top: 3px" />
+
+    <!-- Row 1 -->
+    <div class="row panel">
+      <div class="col-lg-2 mt-2 center">
+        <span style="color: red; font-size: 30px" id="warning"></span>
+      </div>
+      <div class="col-lg-2 mt-2" style="text-align: right; color: blue">
+        Win: +100
+      </div>
+      <div class="col-lg-2 mt-2" style="text-align: right; color: red">
+        Lose: -50
+      </div>
+
+      <div class="col-lg-2 mt-2" style="text-align: right">
+        Current Score:
+        <span id="score"></span>
+      </div>
+      <div class="col-lg-2 mt-2" style="text-align: right">
+        Win Count:
+        <span id="win"></span>
+      </div>
+      <div class="col-lg-2 mt-2" style="text-align: right">
+        Lose Count:
+        <span id="lose"></span>
+      </div>
+
+      <!-- Remaining life  -->
+      <div class="center row col-lg-4 mt-3">
+        <h4 class="col-lg-12">Remaining Life:</h4>
+        <h4 class="col-lg-12" id="life"></h4>
+      </div>
+
+      <!-- Image  -->
+      <div class="center col-lg-4 mt-3">
+        <img
+          id="theMan"
+          height="300px"
+          width="230px"
+          src="../assets/1.jpg"
+          alt="1"
+        />
+      </div>
+
+      <!-- Letters Guessed  -->
+      <div class="center row col-lg-4 mt-3">
+        <h4 class="col-lg-12">Wrong Guesses:</h4>
+        <h4 class="col-lg-12" id="guessedLetters"></h4>
+      </div>
+
+      <!-- Row 2 -->
+
+      <!-- Place holder -->
+      <div class="col-lg-2"></div>
+
+      <!-- Display the word & feedback -->
+      <div class="col-lg-8 center row">
+        <div class="col-lg-12 center mt-5" style="font-size: 30px">
+          <p id="fakeString"></p>
+        </div>
+        <div class="col-lg-12 pb-3" id="status"></div>
+      </div>
+
+      <!-- Place holder -->
+      <div class="col-lg-2"></div>
+    </div>
+
+    <!-- Row 3 -->
+    <div class="row center mt-3">
+      <!-- Place holder -->
+      <div class="row col-lg-4">
+        <div class="col-lg-12">HELP</div>
+        <div class="col-lg-4"></div>
+        <button
+          class="col-lg-4 center btn btn-outline-primary"
+          onClick="onHint()"
+          id="hint"
+        >
+          Get a hint
+        </button>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"></div>
+        <button
+          class="mt-1 col-lg-4 center btn btn-outline-danger"
+          onClick="onCheat()"
+          id="cheat"
+        >
+          Cheat
+        </button>
+        <div class="col-lg-4"></div>
+      </div>
+
+      <!-- Input -->
+
+      <div
+        class="col-lg-4 row inputBox panel center"
+        style="border: 1px solid black"
+      >
+        <div class="col-lg-12 mt-2"><h5>YOUR GUESS</h5></div>
+        <div class="col-lg-12">
+          <input type="text" id="guess" name="guess" maxlength="1" size="12" />
+        </div>
+        <div class="col-lg-12">
+          <button
+            class="mt-2 btn btn-primary mb-2"
+            id="submit"
+            onclick="guessSubmit()"
+          >
+            Submit
+          </button>
+        </div>
+      </div>
+
+      <!-- Place holder -->
+      <div class="row col-lg-4">
+        <div class="col-lg-12">RESTART</div>
+
+        <div class="col-lg-4"></div>
+        <button
+          class="col-lg-4 center btn btn-outline-primary"
+          onClick="onRefresh()"
+          id="reset"
+        >
+          Reset Easy
+        </button>
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"></div>
+        <button
+          class="mt-1 col-lg-4 center btn btn-outline-danger"
+          onClick="onHard()"
+          id="hard"
+        >
+          Reset Hard
+        </button>
+        <div class="col-lg-4"></div>
+      </div>
+    </div>
+  </div>
+  <!-- <div class="row">
+      <div class="col-lg-5"></div>
+      <button class="mt-5 col-lg-2 center btn btn-danger" onClick="onRefresh()">
+        Get a New Word!
+      </button>
+      <div class="col-lg-5"></div>
+    </div> -->
+</body>

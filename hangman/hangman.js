@@ -76,7 +76,7 @@ function init() {
   //clear input, reset the image, previous guesses, enable all buttons, reset life to 7
   document.getElementById("guess").value = "";
   let img = document.getElementById("theMan");
-  img.src = "assets/1.jpg";
+  img.src = "../assets/1.jpg";
   wrongLetters = [];
   document.getElementById("submit").disabled = false;
   document.getElementById("hard").disabled = false;
@@ -106,7 +106,7 @@ function init() {
     document.getElementById("cheat").disabled = false;
     startLife = 3;
     let img = document.getElementById("theMan");
-    img.src = "assets/5.jpg";
+    img.src = "../assets/5.jpg";
     document.getElementById("life").innerHTML = startLife;
   }
   //each round, new word is generated from the bank
@@ -302,11 +302,11 @@ function guessSubmit() {
   //update picture
   let img = document.getElementById("theMan");
   if (startLife == 6) {
-    img.src = "assets/2.jpg";
-  } else if (startLife == 5) img.src = "assets/3.jpg";
-  else if (startLife == 4) img.src = "assets/4.jpg";
-  else if (startLife == 3) img.src = "assets/5.jpg";
-  else if (startLife == 2) img.src = "assets/6.jpg";
-  else if (startLife == 1) img.src = "assets/7.jpg";
-  else if (startLife == 0) img.src = "assets/8.jpg";
+    img.src = "../assets/2.jpg";
+  } else if (startLife == 5) img.src = "../assets/3.jpg";
+  else if (startLife == 4) img.src = "../assets/4.jpg";
+  else if (startLife == 3) img.src = "../assets/5.jpg";
+  else if (startLife == 2) img.src = "../assets/6.jpg";
+  else if (startLife == 1) img.src = "../assets/7.jpg";
+  else if (startLife == 0) img.src = "../assets/8.jpg";
 }
