@@ -6,6 +6,8 @@ let guessedLetters = [];
 let wrongLetters = [];
 let currentScore = 0;
 let hardFlag = false;
+let timesWon = 0;
+let timesLost = 0;
 
 //Initialize on loading
 window.onload = function () {
@@ -21,16 +23,22 @@ function onRefresh() {
 function gameOverCheck() {
   //player lose if life is 0
   if (startLife == 0) {
+    timesLost++;
     document.getElementById("status").innerHTML = "You Lost";
     currentScore -= 50;
     document.getElementById("submit").disabled = true;
     document.getElementById("score").innerHTML = currentScore;
+    document.getElementById("win").innerHTML = timesWon;
+    document.getElementById("lose").innerHTML = timesLost;
     document.getElementById("guess").disabled = true;
     document.getElementById("hint").disabled = true;
     document.getElementById("cheat").disabled = true;
+
+    document.getElementById("fakeString").style.color = "red";
   }
   //player wins if fakeString does not contain *
   if (!fakeString.includes("_")) {
+    timesWon++;
     //if hard mode, double the point
     if (hardFlag == true) {
       currentScore += 200;
@@ -41,10 +49,13 @@ function gameOverCheck() {
       document.getElementById("status").innerHTML = "You Won";
     }
     //all buttons get disabled except reset buttons
+    document.getElementById("win").innerHTML = timesWon;
+    document.getElementById("lose").innerHTML = timesLost;
     document.getElementById("submit").disabled = true;
     document.getElementById("guess").disabled = true;
     document.getElementById("hint").disabled = true;
     document.getElementById("cheat").disabled = true;
+    document.getElementById("fakeString").style.color = "blue";
     document.getElementById("score").innerHTML = currentScore;
   }
 }
@@ -69,6 +80,9 @@ function init() {
   wrongLetters = [];
   document.getElementById("submit").disabled = false;
   document.getElementById("hard").disabled = false;
+  document.getElementById("fakeString").style.color = "black";
+  document.getElementById("win").innerHTML = timesWon;
+  document.getElementById("lose").innerHTML = timesLost;
   document.getElementById("hint").disabled = false;
   document.getElementById("warning").innerHTML = "";
   document.getElementById("cheat").disabled = false;
