@@ -9,15 +9,43 @@
 </head>
 
 <body>
-  <a href="hangman/hangman.html">
-    <button class="btn btn-primary">Hangman</button>
-  </a>
-  <br />
-  <br />
-  <br />
-  <br />
-  <br />
-  <a href="tictactoe/tictactoe.html">
-    <button class="btn btn-primary">TTT</button>
-  </a>
+  <div class="container">
+    <div class="row">
+      <h2 class="mb-5 center mt-3 col-lg-12">JS Game Center</h2>
+      <div class="mt-5 col-lg-12 row center">
+        <button
+          onclick="location.href = '/tictactoe/tictactoe.html'"
+          class="row menuButton col-lg-3 center"
+        >
+          <img src="assets/tic.jpg" height="300px" alt="tic" />
+          <h4>Tic-Tac-Toe</h4>
+        </button>
+
+        <div class="col-lg-1"></div>
+        <button
+          onclick="location.href = '/hangman/hangman.html'"
+          class="row menuButton col-lg-3 center"
+        >
+          <img src="assets/7.jpg" height="300px" alt="Hangman" />
+          <h4>Hangman</h4>
+        </button>
+        <div class="col-lg-1"></div>
+
+        <button
+          onclick="location.href = '/memory/memory.html'"
+          class="menuButton row col-lg-3 center"
+        >
+          <img src="assets/memory.jpg" height="300px" alt="memory" />
+          <h4>Memory Game</h4>
+        </button>
+      </div>
+      <!-- <a href="hangman/hangman.html">
+      <button class="btn btn-primary">Hangman</button>
+    </a>
+
+    <a href="tictactoe/tictactoe.html">
+      <button class="btn btn-primary">Tic Tac Toe</button>
+    </a> -->
+    </div>
+  </div>
 </body>

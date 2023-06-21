@@ -1,0 +1,28 @@
+.center {
+  text-align: center;
+  justify-content: center;
+  display: flex;
+
+  align-self: center;
+}
+
+h2,
+h4 {
+  font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+}
+
+.panel {
+  box-shadow: 20px 20px 80px rgb(218, 218, 218);
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+h5 {
+  font-weight: bold;
+  font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
+}
+
+.menuButton {
+  height: 500px;
+
+  background-color: transparent;
+}
