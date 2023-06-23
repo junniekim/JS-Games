@@ -3,11 +3,13 @@ lives = 10;
 firstOrSecond = 0;
 score = 0;
 gameBoard = [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8];
+imgBoard = [];
 //prevent picking same card twice
 selectingPair = 0;
 correctPair = 0;
 //1-easy 2-medium 3-hard
 gameMode = 1;
+canClick = true;
 /////////////
 
 //initial page load
@@ -83,8 +85,27 @@ function init() {
     document.getElementById("gameModeName").innerHTML = "HARD";
     lives = 5;
   }
-  // shuffle(gameBoard);
-  // shuffle(gameBoard);
+  //shuffle(gameBoard);
+  //shuffle(gameBoard);
+  for (let i = 0; i < gameBoard.length; i++) {
+    if (gameBoard[i] == 1) {
+      imgBoard[i] = '<img src="/assets/square.jpg" width="90px" ">';
+    } else if (gameBoard[i] == 2) {
+      imgBoard[i] = '<img src="/assets/questionMark.jpg" width="90px" ">';
+    } else if (gameBoard[i] == 3) {
+      imgBoard[i] = '<img src="/assets/star.jpg" width="90px" ">';
+    } else if (gameBoard[i] == 4) {
+      imgBoard[i] = '<img src="/assets/heart.jpg" width="90px" ">';
+    } else if (gameBoard[i] == 5) {
+      imgBoard[i] = '<img src="/assets/plus.jpg" width="90px" ">';
+    } else if (gameBoard[i] == 6) {
+      imgBoard[i] = '<img src="/assets/ampersand.jpg" width="90px" ">';
+    } else if (gameBoard[i] == 7) {
+      imgBoard[i] = '<img src="/assets/triangle.jpg" width="90px" ">';
+    } else if (gameBoard[i] == 8) {
+      imgBoard[i] = '<img src="/assets/circle.jpg" width="90px" ">';
+    }
+  }
   document.getElementById("status").innerHTML = "Let's play memory game";
 
   document.getElementById("score").innerHTML = score;
@@ -98,36 +119,54 @@ function init() {
 }
 //disable button beforehand if already chosen OR pair made
 function cardFlipped(x) {
-  //first card
-  if (firstOrSecond % 2 == 0) {
-    selectingPair = x;
-    //disable the selected card
-    document.getElementById("b" + x).disabled = true;
-    //change the flag
-    firstOrSecond++;
-    document.getElementById("status").innerHTML = "Pick one more";
-  }
-  //second card
-  else {
-    //change the flag
-    firstOrSecond++;
-    //card matches
-    if (gameBoard[selectingPair - 1] == gameBoard[x - 1]) {
-      correctPair++;
+  if (canClick) {
+    console.log("HI");
+    //first card
+    if (firstOrSecond % 2 == 0) {
+      selectingPair = x;
+      //disable the selected card
       document.getElementById("b" + x).disabled = true;
-      document.getElementById("status").innerHTML = "Correct";
+      //change the flag
+      firstOrSecond++;
+      document.getElementById("status").innerHTML = "Pick one more";
+      document.getElementById("b" + x).innerHTML = imgBoard[x - 1];
     }
-
-    //card does not Match
+    //second card
     else {
-      lives--;
-      document.getElementById("status").innerHTML = "Wrong";
-      document.getElementById("lives").innerHTML = lives;
-      document.getElementById("b" + selectingPair).disabled = false;
-      document.getElementById("b" + x).disabled = false;
+      //change the flag
+      firstOrSecond++;
+      //card matches
+      if (gameBoard[selectingPair - 1] == gameBoard[x - 1]) {
+        correctPair++;
+        document.getElementById("b" + x).disabled = true;
+        document.getElementById("status").innerHTML = "Correct";
+        document.getElementById("b" + x).innerHTML = imgBoard[x - 1];
+      }
+
+      //card does not Match
+      else {
+        canClick = false;
+        lives--;
+        document.getElementById("b" + x).innerHTML = imgBoard[x - 1];
+        document.getElementById("status").innerHTML = "Wrong";
+        document.getElementById("lives").innerHTML = lives;
+        document.getElementById("b" + selectingPair).disabled = false;
+        document.getElementById("b" + x).disabled = false;
+
+        setTimeout(() => {
+          displayForASecond(x, selectingPair);
+        }, 1000);
+      }
     }
+    gameOverCheck();
   }
-  gameOverCheck();
+}
+function displayForASecond(x, selectingPair) {
+  document.getElementById("b" + selectingPair).innerHTML =
+    '<img src="/assets/back.jpg" width="90px" ">';
+  document.getElementById("b" + x).innerHTML =
+    '<img src="/assets/back.jpg" width="90px" ">';
+  canClick = true;
 }
 function gameOverCheck() {
   if (correctPair == 8) {
