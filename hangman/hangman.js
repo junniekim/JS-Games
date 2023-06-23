@@ -174,7 +174,6 @@ function init() {
   ];
   let randomIndex = Math.floor(Math.random() * wordBank.length);
   chosenWord = wordBank[randomIndex].toLowerCase();
-
   // fake string for display
   fakeString = "";
   for (let i = 0; i < chosenWord.length; i++) {

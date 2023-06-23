@@ -21,9 +21,16 @@ h5 {
   font-family: "Century Gothic", CenturyGothic, Geneva, AppleGothic, sans-serif;
 }
 .card {
-  margin-top: 10px;
+  margin: auto;
+
+  /* margin-top: 10px;
   border-style: solid;
   height: 100px;
   background-color: transparent;
-  font-size: 70px;
+  font-size: 70px; */
+}
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
