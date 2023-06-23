@@ -10,6 +10,7 @@ correctPair = 0;
 //1-easy 2-medium 3-hard
 gameMode = 1;
 canClick = true;
+time = 3000;
 /////////////
 
 //initial page load
@@ -76,17 +77,32 @@ function resetImage() {
 //reset the game
 function init() {
   if (gameMode == 1) {
-    document.getElementById("gameModeName").innerHTML = "EASY";
+    document.getElementById("gameModeName").innerHTML = "EASY LEVEL";
+    document.getElementById("explain").innerHTML =
+      "10 lives & 2 seconds to see cards";
+    document.getElementById("gameModeName").style.color = "blue";
+    document.getElementById("explain").style.color = "blue";
+    time = 2000;
     lives = 10;
   } else if (gameMode == 2) {
-    document.getElementById("gameModeName").innerHTML = "MEDIUM";
+    document.getElementById("gameModeName").innerHTML = "MEDIUM LEVEL";
+    document.getElementById("explain").innerHTML =
+      "8 lives & 1 second to see cards";
+    document.getElementById("gameModeName").style.color = "#F6BE00";
+    document.getElementById("explain").style.color = "#F6BE00";
     lives = 8;
+    time = 1000;
   } else {
-    document.getElementById("gameModeName").innerHTML = "HARD";
+    document.getElementById("explain").innerHTML =
+      "5 lives & .7 seconds to see cards";
+    document.getElementById("gameModeName").innerHTML = "HARD LEVEL";
+    document.getElementById("gameModeName").style.color = "red";
+    document.getElementById("explain").style.color = "red";
     lives = 5;
+    time = 700;
   }
-  //shuffle(gameBoard);
-  //shuffle(gameBoard);
+  shuffle(gameBoard);
+  shuffle(gameBoard);
   for (let i = 0; i < gameBoard.length; i++) {
     if (gameBoard[i] == 1) {
       imgBoard[i] = '<img src="/assets/square.jpg" width="90px" ">';
@@ -106,7 +122,7 @@ function init() {
       imgBoard[i] = '<img src="/assets/circle.jpg" width="90px" ">';
     }
   }
-  document.getElementById("status").innerHTML = "Let's play memory game";
+  document.getElementById("status").innerHTML = "Let's play memory game!";
 
   document.getElementById("score").innerHTML = score;
   document.getElementById("lives").innerHTML = lives;
@@ -120,7 +136,6 @@ function init() {
 //disable button beforehand if already chosen OR pair made
 function cardFlipped(x) {
   if (canClick) {
-    console.log("HI");
     //first card
     if (firstOrSecond % 2 == 0) {
       selectingPair = x;
@@ -128,7 +143,7 @@ function cardFlipped(x) {
       document.getElementById("b" + x).disabled = true;
       //change the flag
       firstOrSecond++;
-      document.getElementById("status").innerHTML = "Pick one more";
+      document.getElementById("status").innerHTML = "Pick a matching card!";
       document.getElementById("b" + x).innerHTML = imgBoard[x - 1];
     }
     //second card
@@ -139,7 +154,8 @@ function cardFlipped(x) {
       if (gameBoard[selectingPair - 1] == gameBoard[x - 1]) {
         correctPair++;
         document.getElementById("b" + x).disabled = true;
-        document.getElementById("status").innerHTML = "Correct";
+        document.getElementById("status").innerHTML =
+          "Correct! Pick a new card!";
         document.getElementById("b" + x).innerHTML = imgBoard[x - 1];
       }
 
@@ -148,14 +164,15 @@ function cardFlipped(x) {
         canClick = false;
         lives--;
         document.getElementById("b" + x).innerHTML = imgBoard[x - 1];
-        document.getElementById("status").innerHTML = "Wrong";
+        document.getElementById("status").innerHTML =
+          "Try again! Pick a new card!";
         document.getElementById("lives").innerHTML = lives;
         document.getElementById("b" + selectingPair).disabled = false;
         document.getElementById("b" + x).disabled = false;
 
         setTimeout(() => {
           displayForASecond(x, selectingPair);
-        }, 1000);
+        }, time);
       }
     }
     gameOverCheck();
@@ -180,7 +197,7 @@ function gameOverCheck() {
       score += 300;
     }
 
-    document.getElementById("status").innerHTML = "Won";
+    document.getElementById("status").innerHTML = "You won!";
   }
   if (lives == 0) {
     score -= 50;
@@ -200,7 +217,7 @@ function gameOverCheck() {
     document.getElementById("b14").disabled = true;
     document.getElementById("b15").disabled = true;
     document.getElementById("b16").disabled = true;
-    document.getElementById("status").innerHTML = "Lost";
+    document.getElementById("status").innerHTML = "You lost! Try again!";
   }
   document.getElementById("score").innerHTML = score;
 }
